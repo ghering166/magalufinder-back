@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.magalufinder.models.Store;
 import com.magalufinder.repository.StoreRepository;
+import com.magalufinder.util.ProductStoreTO;
 
 @Service
 public class StoreService implements Serializable  {
@@ -23,5 +24,9 @@ public class StoreService implements Serializable  {
 	
 	public Store findOne(Long id) {
 		return repository.findOne(id);
+	}
+
+	public List<ProductStoreTO> findSearchProductAddress(String product, String address) {
+		return repository.findSearchProductAddress(product, address);
 	}
 }
