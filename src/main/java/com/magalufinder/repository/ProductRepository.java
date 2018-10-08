@@ -16,5 +16,8 @@ public interface ProductRepository extends CrudRepository<Product, Long>{
 	 		" INNER JOIN tab_stores s ON s.id = ps.id_store\r\n" + 
 	 		" WHERE ps.id_store = :id", nativeQuery = true)
 	 List<Product> findByProductByIdStore(@Param("id") Long id);
+
+	@Query("select p from Product p where p.code = :product or p.description LIKE '%' || :product || '%'")
+	List<Product> findByCodeByDescription(@Param("product") String product);
 	
 }

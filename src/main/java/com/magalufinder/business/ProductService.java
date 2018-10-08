@@ -28,4 +28,8 @@ public class ProductService implements Serializable  {
 	public List<Product> findByProductByIdStore(Long id){
 		return repository.findByProductByIdStore(id);
 	}
+
+	public List<Product> findByCodeByDescription(String product) {
+		return repository.findByCodeByDescription(product);
+	}
 }

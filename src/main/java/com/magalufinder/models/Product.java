@@ -15,9 +15,11 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.Table;
 
 
-@Entity(name = "tab_product")
+@Entity
+@Table(name="tab_product")
 public class Product {
 
 	@Id
@@ -26,7 +28,7 @@ public class Product {
 	private Long id;
 
 	@Column(name = "code")
-	private Long code;
+	private String code;
 
 	@Column(name = "description")
 	private String description;
@@ -45,11 +47,11 @@ public class Product {
 		return id;
 	}
 
-	public Long getCode() {
+	public String getCode() {
 		return code;
 	}
 
-	public void setCode(Long code) {
+	public void setCode(String code) {
 		this.code = code;
 	}
 

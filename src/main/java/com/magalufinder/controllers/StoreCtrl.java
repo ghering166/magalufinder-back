@@ -4,6 +4,7 @@ package com.magalufinder.controllers;
 
 
 import java.io.Serializable;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,7 +12,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+import com.magalufinder.business.ProductService;
 import com.magalufinder.business.StoreService;
+import com.magalufinder.models.Product;
 import com.magalufinder.models.Store;
 import com.magalufinder.util.ResponseData;
 
@@ -23,7 +26,10 @@ public class StoreCtrl implements Serializable{
 	private static final long serialVersionUID = -8870699623137598742L;
 	
 	@Autowired
-	private StoreService bo;
+	private StoreService storeService;
+	
+	@Autowired
+	private ProductService productService;
 	
 
 	@PostMapping(value = "/api/store/newStore", 
@@ -35,17 +41,18 @@ public class StoreCtrl implements Serializable{
 
 	@GetMapping(value = "api/store/getAll", produces = "application/json")
 	public ResponseData getAllStores() {
-		return new ResponseData(this.bo.findAll());
+		return new ResponseData(this.storeService.findAll());
 	}
 
 	@GetMapping(value = "store/getById/{id}", produces = "application/json")
 	public ResponseData getStoreById(@PathVariable("id") Long id) {
-		return new ResponseData(this.bo.findOne(id));
+		return new ResponseData(this.storeService.findOne(id));
 	}
 	
 	@GetMapping(value = "store/search/{product}/{address}", produces = "application/json")
 	public ResponseData getStoreSearchProductAddress(@PathVariable("product") String product, @PathVariable("address") String address) {
-		return new ResponseData(this.bo.findSearchProductAddress(product,address));
+		List<Product> products = this.productService.findByCodeByDescription(product);
+		return new ResponseData(products);
 	}
 
 }
