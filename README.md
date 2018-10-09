@@ -1,5 +1,12 @@
-# Informações de configuração :).
-**:: Spring Boot ::        (v1.5.3.RELEASE)**
+# Informações de configuração
+
+## Requisitos obrigatórios
+Desenvolvimento realizado com Java, framework Spring Boot e BD Mysql. 
+**:: Java        ::        (v1.8)           ****:: Spring Boot ::        (v1.5.3.RELEASE) ****:: Mysql Boot  ::        (v5.1.35)        **
+
+## Dependências (jars)
+O projeto faz uso do **maven** para gerenciamento das dependências, o arquivo **pom.xml** possui todas
+as dependências utilizadas com suas devidas versões.
 
 ## Configurações do Spring JPA
 O BD utilizado foi **MYSQL**, crie o banco e configure os dados de acesso no arquivo **application.properties**. Uma 
