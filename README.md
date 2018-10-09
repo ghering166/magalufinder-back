@@ -1,6 +1,18 @@
-#Some setup information :).
+# Informações de configuração :).
+**:: Spring Boot ::        (v1.5.3.RELEASE)**
 
-##Spring JPA Setup
-You need to change the **application.properties** and configure the login, password and url of your database. 
+## Configurações do Spring JPA
+O BD utilizado é **MYSQL**, crie o banco e configure os dados de acesso no arquivo **application.properties**. Uma 
+cópia do mesmo encontra-se na pasta **resources/bd/magalufinder.sql**
+
+## Iniciando o Projeto
+Execute a classe **Boot.java**, por padrão será iniciado na porta 8080, entretanto, confira no 
+console a porta executada, uma mensagem como **Tomcat started on port(s): 8080 (http)** deve ser exibida.
+
+## Acessando o Swagger
+Após iniciar o projeto basta acessar a url **http://localhost:8080/swagger-ui.html#/**.
+
+
+
   	
 
