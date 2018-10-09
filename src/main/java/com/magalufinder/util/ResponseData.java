@@ -3,6 +3,13 @@ package com.magalufinder.util;
 
 import org.springframework.http.HttpStatus;
 
+/**
+ * Utilizado para padronizar as respostas da API
+ * 
+ * @author Henrique Santiago 
+ * @version 1.0 
+ * @since 9 de out de 2018
+ */
 public class ResponseData {
 
 	private Object data;
