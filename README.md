@@ -5,7 +5,7 @@
 O BD utilizado foi **MYSQL**, crie o banco e configure os dados de acesso no arquivo **application.properties**. Uma 
 cópia do mesmo encontra-se na pasta **resources/bd/magalufinder.sql**
 
-## Iniciando o Projeto
+## Executando o Projeto
 Execute a classe **Boot.java**, por padrão será iniciado na porta 8080, entretanto, confira no 
 console a porta executada, uma mensagem como **Tomcat started on port(s): 8080 (http)** deve ser exibida.
 
