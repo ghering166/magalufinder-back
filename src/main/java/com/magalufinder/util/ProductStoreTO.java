@@ -4,54 +4,120 @@ package com.magalufinder.util;
 
 
 import java.io.Serializable;
-import java.math.BigDecimal;
-import lombok.AllArgsConstructor;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
 
 
-@AllArgsConstructor
-@EqualsAndHashCode
-@ToString
-public class ProductStoreTO implements Serializable {
+public class ProductStoreTO implements Serializable, Comparable<Long> {
 
 	private static final long serialVersionUID = 7063413446774490274L;
 
 	public ProductStoreTO() {
 	}
 
-	@Getter
-	@Setter
-	private Long idStore;
+	private Long code;
+	private String description;
+	private String cep;
+	private String value;
+	private String codeProduct;
+	private String distance;
+	private Long km;
 
-	@Getter
-	@Setter
-	private Long idProduct;
+	public Long getCode() {
+		return code;
+	}
 
-	@Getter
-	@Setter
-	private Long codeProduct;
+	public void setCode(Long code) {
+		this.code = code;
+	}
 
-	@Getter
-	@Setter
-	private Long codeStore;
+	public String getDescription() {
+		return description;
+	}
 
-	@Getter
-	@Setter
-	private String descriptionStore;
+	public void setDescription(String description) {
+		this.description = description;
+	}
 
-	@Getter
-	@Setter
-	private String descriptionProduct;
+	public String getCep() {
+		return cep;
+	}
 
-	@Getter
-	@Setter
-	private BigDecimal value;
+	public void setCep(String cep) {
+		this.cep = cep;
+	}
 
-	@Getter
-	@Setter
-	private Long distance;
+	public String getValue() {
+		return value;
+	}
+
+	public void setValue(String value) {
+		this.value = value;
+	}
+
+	public String getCodeProduct() {
+		return codeProduct;
+	}
+
+	public void setCodeProduct(String codeProduct) {
+		this.codeProduct = codeProduct;
+	}
+
+	public String getDistance() {
+		return distance;
+	}
+
+	public void setDistance(String distance) {
+		this.distance = distance;
+	}
+
+	public Long getKm() {
+		return km;
+	}
+
+	public void setKm(Long km) {
+		this.km = km;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((code == null) ? 0 : code.hashCode());
+		result = prime * result
+				+ ((codeProduct == null) ? 0 : codeProduct.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		ProductStoreTO other = (ProductStoreTO) obj;
+		if (code == null) {
+			if (other.code != null)
+				return false;
+		} else if (!code.equals(other.code))
+			return false;
+		if (codeProduct == null) {
+			if (other.codeProduct != null)
+				return false;
+		} else if (!codeProduct.equals(other.codeProduct))
+			return false;
+		return true;
+	}
+
+	@Override
+	public int compareTo(Long distance) {
+		if (this.km < distance) {
+			return -1;
+		}
+		if (this.km > distance) {
+			return 1;
+		}
+		return 0;
+	}
 
 }
