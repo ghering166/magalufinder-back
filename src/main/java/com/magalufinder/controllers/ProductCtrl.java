@@ -16,6 +16,12 @@ import com.magalufinder.models.Product;
 import com.magalufinder.util.ResponseData;
 
 
+/**
+ * 
+ * @author Henrique Santiago 
+ * @version 1.0 
+ * @since 9 de out de 2018
+ */
 @RestController
 @CrossOrigin(origins="*")
 public class ProductCtrl implements Serializable {
@@ -25,27 +31,36 @@ public class ProductCtrl implements Serializable {
 	@Autowired
 	private ProductService productService;
 
-	@PostMapping(value = "/api/product/save", 
-			consumes = "application/json", produces = "application/json")
-	public ResponseData newProduct(@RequestBody Product product)
+	/**
+	 * 
+	 * Cria um novo produto
+	 * 
+	 */
+	@PostMapping(value = "/api/product/save", consumes = "application/json", produces = "application/json")
+	public ResponseData save(@RequestBody Product product)
 			throws Exception {
 		this.productService.save(product);
-		return new ResponseData("Seu produto foi cadastrado com com sucesso!");
+		return new ResponseData(null, "Seu produto foi cadastrado com sucesso!");
 	}
 
-	@GetMapping(value = "api/product/getAll", produces = "application/json")
+	/**
+	 * 
+	 * Recupera todos os produtos 
+	 * 
+	 */
+	@GetMapping(value = "api/products", produces = "application/json")
 	public ResponseData getAllProducts() {
 		return new ResponseData(this.productService.findAll());
 	}
 
-	@GetMapping(value = "api/product/getById/{id}", produces = "application/json")
+	/**
+	 * 
+	 * Recupera um produto por ID
+	 * 
+	 */
+	@GetMapping(value = "api/product/{id}", produces = "application/json")
 	public ResponseData getProductById(@PathVariable("id") Long id) {
 		return new ResponseData(this.productService.findOne(id));
 	}
 	
-	@GetMapping(value = "api/product/getProductByIdStore/{id}", produces = "application/json")
-	public ResponseData getProductByIdStore(@PathVariable("id") Long id) {
-		return new ResponseData(this.productService.findByProductByIdStore(id));
-	}
-
 }

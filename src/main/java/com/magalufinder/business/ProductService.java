@@ -44,14 +44,30 @@ public class ProductService implements Serializable {
 		return repository.findOne(id);
 	}
 
-	public List<Product> findByProductByIdStore(Long id) {
-		return repository.findByProductByIdStore(id);
-	}
-
+	/**
+	 * 
+	 * Recupera o produto tendo como filtro código ou descrição
+	 * 
+	 */
 	public List<Product> findByCodeByDescription(String product) {
 		return repository.findByCodeByDescription(product);
 	}
 
+	/**
+	 * 
+	 * Prepara a lista de lojas encontradas para o produto
+	 * informado.
+	 * 
+	 * RNG: Funcionalidade 3: Prover lojas mais próximas que possuem o produto
+	 *
+	 * @author Henrique Santiago
+	 * @param products
+	 * @param address
+	 * @return List<ProductStoreTO>
+	 * @throws ApiException
+	 * @throws InterruptedException
+	 * @throws IOException
+	 */
 	public List<ProductStoreTO> prepareListStores(List<Product> products,
 			String address) throws ApiException, InterruptedException, IOException {
 		Set<ProductStoreTO> setProductStoreTO = new HashSet<>();
@@ -70,12 +86,22 @@ public class ProductService implements Serializable {
 		return mountListOrdered(setProductStoreTO);
 	}
 
+	/**
+	 * 
+	 * Ordena a lista de lojas em ordem crescente.
+	 * 
+	 */
 	private List<ProductStoreTO> mountListOrdered(Set<ProductStoreTO> setProductStoreTO) {
 		List<ProductStoreTO> productStoreTOs = new ArrayList<ProductStoreTO>(setProductStoreTO);
 		Collections.sort(productStoreTOs, new ProductStoreComparator());
 		return productStoreTOs;
 	}
 
+	/**
+	 * 
+	 * Retorna a distância das lojas mais próximas do ponto de origem
+	 * 
+	 */
 	private void getDistanceBetweenTwoPoints(String address, String code, ProductStoreTO productStoreTO)
 			throws ApiException, InterruptedException, IOException {
 		GeoApiContext distCalcer = new GeoApiContext.Builder()
@@ -90,15 +116,15 @@ public class ProductService implements Serializable {
 		productStoreTO.setKm(result.rows[0].elements[0].distance.inMeters);
 	}
 	
+	public void save(Product product) {
+		repository.save(product);
+	}
+	
 	private String formatarValorMonetario(final BigDecimal valor) {
 		if (valor != null) {
 			DecimalFormat nf = new DecimalFormat("#,##0.00");
 			return nf.format(valor.doubleValue());
 		}
 		return "";
-	}
-
-	public void save(Product product) {
-		repository.save(product);
 	}
 }
