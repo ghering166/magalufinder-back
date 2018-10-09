@@ -2,7 +2,7 @@
 **:: Spring Boot ::        (v1.5.3.RELEASE)**
 
 ## Configurações do Spring JPA
-O BD utilizado é **MYSQL**, crie o banco e configure os dados de acesso no arquivo **application.properties**. Uma 
+O BD utilizado foi **MYSQL**, crie o banco e configure os dados de acesso no arquivo **application.properties**. Uma 
 cópia do mesmo encontra-se na pasta **resources/bd/magalufinder.sql**
 
 ## Iniciando o Projeto
