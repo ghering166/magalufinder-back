@@ -97,4 +97,8 @@ public class ProductService implements Serializable {
 		}
 		return "";
 	}
+
+	public void save(Product product) {
+		repository.save(product);
+	}
 }

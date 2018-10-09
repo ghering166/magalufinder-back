@@ -35,11 +35,12 @@ public class StoreCtrl implements Serializable{
 	private ProductService productService;
 	
 
-	@PostMapping(value = "/api/store/newStore", 
+	@PostMapping(value = "/api/store/save", 
 			consumes = "application/json", produces = "application/json")
 	public ResponseData newStore(@RequestBody Store store)
 			throws Exception {
-		return new ResponseData(new Store(), "Sua loja foi cadastrada com com sucesso!");
+		this.storeService.save(store);
+		return new ResponseData("Sua loja foi cadastrada com com sucesso!");
 	}
 
 	@GetMapping(value = "api/store/getAll", produces = "application/json")

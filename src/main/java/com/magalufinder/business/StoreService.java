@@ -25,5 +25,9 @@ public class StoreService implements Serializable  {
 		return repository.findOne(id);
 	}
 
+	public void save(Store store) {
+		repository.save(store);
+	}
+
 	
 }
