@@ -21,7 +21,11 @@ import com.magalufinder.models.Store;
 import com.magalufinder.util.ProductStoreTO;
 import com.magalufinder.util.ResponseData;
 
-
+/**
+ * @author Henrique Santiago 
+ * @version 1.0 
+ * @since 9 de out de 2018
+ */
 @RestController
 @CrossOrigin(origins="*")
 public class StoreCtrl implements Serializable{
@@ -35,6 +39,11 @@ public class StoreCtrl implements Serializable{
 	private ProductService productService;
 	
 
+	/**
+	 * 
+	 * Cria uma nova loja
+	 * 
+	 */
 	@PostMapping(value = "/api/store/save", 
 			consumes = "application/json", produces = "application/json")
 	public ResponseData save(@RequestBody Store store)
@@ -43,16 +52,31 @@ public class StoreCtrl implements Serializable{
 		return new ResponseData("Sua loja foi cadastrada com com sucesso!");
 	}
 
-	@GetMapping(value = "api/store/getAll", produces = "application/json")
+	/**
+	 * 
+	 * Recupera todas as lojas
+	 *  
+	 */
+	@GetMapping(value = "api/stores", produces = "application/json")
 	public ResponseData getAllStores() {
 		return new ResponseData(this.storeService.findAll());
 	}
 
-	@GetMapping(value = "api/store/getById/{id}", produces = "application/json")
+	/**
+	 * 
+	 * Recupera uma loja por ID
+	 * 
+	 */
+	@GetMapping(value = "api/store/{id}", produces = "application/json")
 	public ResponseData getStoreById(@PathVariable("id") Long id) {
 		return new ResponseData(this.storeService.findOne(id));
 	}
 	
+	/**
+	 * 
+	 * Recupera as lojas por produto e endereço
+	 * 
+	 */
 	@GetMapping(value = "api/store/search/{product}/{address}", produces = "application/json")
 	public ResponseData getStoreSearchProductAddress(@PathVariable("product") String product, @PathVariable("address") String address) throws ApiException, InterruptedException, IOException {
 		List<Product> products = this.productService.findByCodeByDescription(product);
