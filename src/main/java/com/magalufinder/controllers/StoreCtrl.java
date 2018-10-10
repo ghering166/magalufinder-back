@@ -57,7 +57,7 @@ public class StoreCtrl implements Serializable{
 	 * Recupera todas as lojas
 	 *  
 	 */
-	@GetMapping(value = "api/stores", produces = "application/json")
+	@GetMapping(value = "/api/stores", produces = "application/json")
 	public ResponseData getAllStores() {
 		return new ResponseData(this.storeService.findAll());
 	}
@@ -67,7 +67,7 @@ public class StoreCtrl implements Serializable{
 	 * Recupera uma loja por ID
 	 * 
 	 */
-	@GetMapping(value = "api/store/{id}", produces = "application/json")
+	@GetMapping(value = "/api/store/{id}", produces = "application/json")
 	public ResponseData getStoreById(@PathVariable("id") Long id) {
 		return new ResponseData(this.storeService.findOne(id));
 	}
@@ -77,7 +77,7 @@ public class StoreCtrl implements Serializable{
 	 * Recupera as lojas por produto e endereço
 	 * 
 	 */
-	@GetMapping(value = "api/store/search/{product}/{address}", produces = "application/json")
+	@GetMapping(value = "/api/store/search/{product}/{address}", produces = "application/json")
 	public ResponseData getStoreSearchProductAddress(@PathVariable("product") String product, @PathVariable("address") String address) throws ApiException, InterruptedException, IOException {
 		List<Product> products = this.productService.findByCodeByDescription(product);
 		List<ProductStoreTO> productStores = this.productService.prepareListStores(products, address);

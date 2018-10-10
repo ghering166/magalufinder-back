@@ -48,7 +48,7 @@ public class ProductCtrl implements Serializable {
 	 * Recupera todos os produtos 
 	 * 
 	 */
-	@GetMapping(value = "api/products", produces = "application/json")
+	@GetMapping(value = "/api/products", produces = "application/json")
 	public ResponseData getAllProducts() {
 		return new ResponseData(this.productService.findAll());
 	}
@@ -58,7 +58,7 @@ public class ProductCtrl implements Serializable {
 	 * Recupera um produto por ID
 	 * 
 	 */
-	@GetMapping(value = "api/product/{id}", produces = "application/json")
+	@GetMapping(value = "/api/product/{id}", produces = "application/json")
 	public ResponseData getProductById(@PathVariable("id") Long id) {
 		return new ResponseData(this.productService.findOne(id));
 	}
