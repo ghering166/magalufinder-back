@@ -7,7 +7,7 @@ Desenvolvimento realizado com Java, framework Spring Boot e banco de dados MYSQL
 O projeto faz uso do **maven** para gerenciamento das dependências, o arquivo **pom.xml** possui todas
 as dependências utilizadas com suas devidas versões.
 
-## Configurações do Spring JPAA
+## Configurações do Spring JPA
 O BD utilizado foi **MYSQL**, crie o banco e configure os dados de acesso no arquivo **application.properties**. Uma 
 cópia do mesmo encontra-se na pasta **resources/bd/magalufinder.sql**
 
