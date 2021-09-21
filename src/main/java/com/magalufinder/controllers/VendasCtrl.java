@@ -35,7 +35,7 @@ public class VendasCtrl {
 		- Criar com base nas classes anteriores (vendas);
 		- Criar métodos para listar todos, listar por id;
 		- Criar método de salvar e excluir;
-	    - Listar pelo nome do vendedor;
+	    - Listar pelo nome do vendedor;("Esse método não foi implementado?")
 	 */
 	
 	@PostMapping("/adicionarVenda")
