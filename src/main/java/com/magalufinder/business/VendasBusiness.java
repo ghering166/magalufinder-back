@@ -33,6 +33,12 @@ public class VendasBusiness {
 	@Autowired
 	private VendaRepository repository;
 	
+	/**
+		- A validação ficou correta, daria pra criar um método generico pra centralizar todas essas validações, haja visto todas
+		estarem testando o == null. 
+		- Depois da uma olhada nesse artigo pra conhecer um pouco mais do Spring Validation 
+		-> https://www.zup.com.br/blog/spring-validation-o-que-e
+	*/
 	private void validarCamposObrigatorios(Venda venda) throws Exception {
 		if(venda.getVendedor() == null) {
 			throw new Exception("Vendedor não pode ser nulo.");
@@ -54,6 +60,9 @@ public class VendasBusiness {
 		}
 	}
 	
+	/**
+		- Chegou a testar se realmente ta inserindo banco?
+	*/
 	public void adicionarVenda(Venda venda) throws Exception {
 		this.validarCamposObrigatorios(venda);
 		this.repository.save(venda);
