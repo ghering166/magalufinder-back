@@ -19,7 +19,7 @@ public class SwaggerConfig {
 	@Bean
 	public Docket api() {
 		return new Docket(DocumentationType.SWAGGER_2)
-//				.host("http://apps.bitmovel.com.br:8080")
+				.host("http://localhost:8080")
 				.select()
 				.apis(RequestHandlerSelectors.basePackage("com.magalufinder.controllers"))
 				.paths(PathSelectors.any())
