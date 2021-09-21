@@ -11,6 +11,9 @@ import com.magalufinder.models.Venda;
 
 public interface VendaRepository extends CrudRepository<Venda, Integer> {
 
+	/**
+	  - Favor reescrever as 2 query abaixo sem utilizar nativeQuery; 
+	*/
 	@Query(value = "select * from tab_vendas order by vendedor", nativeQuery = true)
 	List<Venda> retornaListaOrdenadaVendedor();
 	
