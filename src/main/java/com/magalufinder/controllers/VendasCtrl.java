@@ -43,7 +43,9 @@ public class VendasCtrl {
 		this.vendasBusiness.adicionarVenda(venda);
 	}
 
-	
+	/**
+		- Uma outra forma que pode retornar o status -> https://www.amitph.com/spring-return-specific-http-status/
+	*/
 	@DeleteMapping("/removerVenda/{id}")
 	public ResponseEntity<Void> removeVenda(@PathVariable(name = "id") int id) throws Exception {
 		Integer val = Integer.valueOf(id);
