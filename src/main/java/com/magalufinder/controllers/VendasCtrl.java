@@ -56,6 +56,10 @@ public class VendasCtrl {
 		return ResponseEntity.ok(this.vendasBusiness.listarVendasPorId());
 	}
 	
+	/*
+	 * 
+	 * - Como irá filtrar as vendas do vendedor, parece que ficou faltando o parametro vendedor?
+	 */
 	@GetMapping("/listaVendas/vendedor")
 	public ResponseEntity<List<Venda>> listarVendaPorVendedor() throws Exception{
 		return ResponseEntity.ok(this.vendasBusiness.listarVendasPorVendedor());
