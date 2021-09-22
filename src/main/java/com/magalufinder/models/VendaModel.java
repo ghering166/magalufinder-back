@@ -14,7 +14,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name= "tab_vendas")
-public class Venda implements Serializable{
+public class VendaModel implements Serializable{
 	
 	private static final long serialVersionUID = 8415655390642295011L;
 	
@@ -35,7 +35,7 @@ public class Venda implements Serializable{
 	@Column(name = "uf")
 	private String uf;
 	
-	public Venda() {
+	public VendaModel() {
 		
 	}
 	

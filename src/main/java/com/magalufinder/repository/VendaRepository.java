@@ -7,16 +7,18 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 
-import com.magalufinder.models.Venda;
+import com.magalufinder.models.VendaModel;
 
-public interface VendaRepository extends CrudRepository<Venda, Integer> {
+public interface VendaRepository extends CrudRepository<VendaModel, Integer> {
 
 	/**
-	  - Favor reescrever as 2 query abaixo sem utilizar nativeQuery; 
+	  - Favor reescrever as 2 query abaixo sem utilizar nativeQuery;
+	  
+	   Feito
 	*/
-	@Query(value = "select * from tab_vendas order by vendedor", nativeQuery = true)
-	List<Venda> retornaListaOrdenadaVendedor();
+	@Query("select v from VendaModel v order by v.vendedor")
+	List<VendaModel> retornaListaOrdenadaVendedor();
 	
-	@Query(value = "select * from tab_vendas", nativeQuery = true)
-	List<Venda> retornaListaOrdenadaId();
+	@Query("select v from VendaModel v")
+	List<VendaModel> retornaListaOrdenadaId();
 }

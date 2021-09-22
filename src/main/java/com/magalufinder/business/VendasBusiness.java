@@ -15,7 +15,7 @@ import org.springframework.stereotype.Service;
 //import br.com.dev.jr.dto.Vendedor;
 
 import com.magalufinder.repository.VendaRepository;
-import com.magalufinder.models.Venda;
+import com.magalufinder.models.VendaModel;
 
 
 /*
@@ -39,7 +39,7 @@ public class VendasBusiness {
 		- Depois da uma olhada nesse artigo pra conhecer um pouco mais do Spring Validation 
 		-> https://www.zup.com.br/blog/spring-validation-o-que-e
 	*/
-	private void validarCamposObrigatorios(Venda venda) throws Exception {
+	private void validarCamposObrigatorios(VendaModel venda) throws Exception {
 		if(venda.getVendedor() == null) {
 			throw new Exception("Vendedor não pode ser nulo.");
 		}
@@ -63,7 +63,7 @@ public class VendasBusiness {
 	/**
 		- Chegou a testar se realmente ta inserindo banco?
 	*/
-	public void adicionarVenda(Venda venda) throws Exception {
+	public void adicionarVenda(VendaModel venda) throws Exception {
 		this.validarCamposObrigatorios(venda);
 		this.repository.save(venda);
 	}
@@ -73,11 +73,11 @@ public class VendasBusiness {
 		this.repository.deleteById(id);
 	}
 	
-	public List<Venda> listarVendasPorId(){
+	public List<VendaModel> listarVendasPorId(){
 		return repository.retornaListaOrdenadaId();
 	}
 	
-	public List<Venda> listarVendasPorVendedor(){
+	public List<VendaModel> listarVendasPorVendedor(){
 		return repository.retornaListaOrdenadaVendedor();
 	}
 }

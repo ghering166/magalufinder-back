@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 //import br.com.dev.jr.dto.Vendedor;
 
 import com.magalufinder.business.VendasBusiness;
-import com.magalufinder.models.Venda;
+import com.magalufinder.models.VendaModel;
 
 @RestController
 @CrossOrigin(origins="*")
@@ -39,7 +39,7 @@ public class VendasCtrl {
 	 */
 	
 	@PostMapping("/adicionarVenda")
-	public void adicionarEndereco(@RequestBody Venda venda) throws Exception {
+	public void adicionarEndereco(@RequestBody VendaModel venda) throws Exception {
 		this.vendasBusiness.adicionarVenda(venda);
 	}
 
@@ -54,7 +54,7 @@ public class VendasCtrl {
 	}
 	
 	@GetMapping("/listaVendas/id")
-	public ResponseEntity<List<Venda>> listarVendaPorId() throws Exception{
+	public ResponseEntity<List<VendaModel>> listarVendaPorId() throws Exception{
 		return ResponseEntity.ok(this.vendasBusiness.listarVendasPorId());
 	}
 	
@@ -63,7 +63,7 @@ public class VendasCtrl {
 	 * - Como irá filtrar as vendas do vendedor, parece que ficou faltando o parametro vendedor?
 	 */
 	@GetMapping("/listaVendas/vendedor")
-	public ResponseEntity<List<Venda>> listarVendaPorVendedor() throws Exception{
+	public ResponseEntity<List<VendaModel>> listarVendaPorVendedor() throws Exception{
 		return ResponseEntity.ok(this.vendasBusiness.listarVendasPorVendedor());
 	}
 	
