@@ -42,6 +42,11 @@ public class VendasCtrl {
 	public void adicionarEndereco(@RequestBody VendaModel venda) throws Exception {
 		this.vendasBusiness.adicionarVenda(venda);
 	}
+	
+	@PostMapping("/atualizaVenda")
+	public void atualizarVenda(@RequestBody VendaModel venda) throws Exception {
+		this.vendasBusiness.atualizarVenda(venda);
+	}
 
 	/**
 		- Uma outra forma que pode retornar o status -> https://www.amitph.com/spring-return-specific-http-status/

@@ -21,4 +21,7 @@ public interface VendaRepository extends CrudRepository<VendaModel, Integer> {
 	
 	@Query("select v from VendaModel v")
 	List<VendaModel> retornaListaOrdenadaId();
+	
+//	@Query("update VendaModel venda set venda.vendedor ")
+//	void atualizaVenda();
 }

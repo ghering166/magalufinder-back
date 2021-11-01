@@ -7,9 +7,9 @@ import org.springframework.boot.context.properties.EnableConfigurationProperties
 
 @SpringBootApplication
 @EntityScan(basePackages = "com.magalufinder.models")  // scan JPA entities
-public class AccessingDataMysqlApplication {
+public class MainApp {
 
 	public static void main(String[] args) {
-		SpringApplication.run(AccessingDataMysqlApplication.class, args);
+		SpringApplication.run(MainApp.class, args);
 	}
 }

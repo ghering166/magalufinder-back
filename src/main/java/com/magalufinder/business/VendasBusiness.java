@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -66,6 +67,20 @@ public class VendasBusiness {
 	public void adicionarVenda(VendaModel venda) throws Exception {
 		this.validarCamposObrigatorios(venda);
 		this.repository.save(venda);
+	}
+	
+	public void atualizarVenda(VendaModel venda) throws Exception {
+		
+		this.validarId(venda.getId());
+//		this.validarCamposObrigatorios(venda);
+		Optional<VendaModel> temp = this.repository.findById(venda.getId());
+		if(temp.isEmpty()) {
+			System.out.println("vazio");
+		}
+		else {
+			this.repository.save(venda);
+		}
+		
 	}
 	
 	public void removerVenda(Integer id) throws Exception {
